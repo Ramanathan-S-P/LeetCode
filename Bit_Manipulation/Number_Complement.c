@@ -18,4 +18,16 @@ ans+= !a[i]*(int ) (pow(2,inc++));
 }
 //printf("%d",ans);
 return ans;
+
+/*
+Alternate method is to generate 1's to length of bin value of given num say 5=(101)..then generate(111) and xor both to get 1's complement...there are also other ways to do this ...
+
+int find compliment(num)
+{
+long int cnt=(int) log2(n)+1;
+long int num=(int) pow(2,cnt)-1;
+return n^num;
+}
+*/
+
 }
