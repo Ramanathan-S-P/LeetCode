@@ -93,6 +93,7 @@ char* fractionAddition(char* q) {
     int div=gcd(dup,lcm);
   
 static char s[100];
+/* if not static after function return memory will be deallocated this s[] array would be a dangling pointer */
 sprintf(s,"%d/%d",num/div,lcm/div);
     printf("%s\n",s);
 return &s;
