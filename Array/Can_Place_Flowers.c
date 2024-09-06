@@ -1,3 +1,4 @@
+#include<stdbool.h>
 bool canPlaceFlowers(int* flowerbed, int flowerbedSize, int n) {
 int i=0;
 int count=0;
