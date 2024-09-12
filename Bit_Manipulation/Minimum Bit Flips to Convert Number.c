@@ -1,5 +1,5 @@
 int minBitFlips(int a, int b) {
-   int c=a^b;
+int c=a^b;
 int count=0;
 while(c!=0){
 count+=c&1;
