@@ -1,4 +1,4 @@
-int countConsistentStrings(char * allowed, char ** words, int wordsSize){
+    int countConsistentStrings(char * allowed, char ** words, int wordsSize){
 int hash[125]={0};
     for(int i=0;i<strlen(allowed);i++){
         hash[allowed[i]]=1;
