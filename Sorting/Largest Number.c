@@ -32,7 +32,7 @@ char* largestNumber(int* a, int n) {
     int num;
     sscanf(s,"%d",&num);
     if(num==0){
-        sprintf(s,"%d",0);
+        return "0";
     }
     return s;
         
