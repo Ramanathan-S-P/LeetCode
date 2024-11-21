@@ -25,7 +25,7 @@ void traverse(int i, int j,char d,int m,int n,char map[m][n]){
             i+=add;
         }
     }
-    if(x=='j'){
+    else{
         j+=add;
         while(j>-1&&j<n&&(map[i][j]!='w'&&map[i][j]!='g')){
         if(map[i][j]!='s'){
