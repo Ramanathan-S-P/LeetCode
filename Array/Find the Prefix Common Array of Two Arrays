@@ -1,0 +1,41 @@
+/**
+ * Note: The returned array must be malloced, assume caller calls free().
+ */
+int* findThePrefixCommonArray(int* A, int ASize, int* B, int BSize, int* returnSize) {
+    int *arr=malloc(sizeof(int)*ASize);
+    int Ahash[ASize+1];
+    int Bhash[ASize+1];
+    memset(Ahash,0,sizeof(int)*(ASize+1));
+    memset(Bhash,0,sizeof(int)*(ASize+1));
+    if(A[0]==B[0]){
+        arr[0]=1;
+    }
+    else{
+        arr[0]=0;
+    }
+    Ahash[A[0]]=1;
+    Bhash[B[0]]=1;
+    for(int i=1;i<ASize;i++){
+        Ahash[A[i]]=1;
+        Bhash[B[i]]=1;
+        if(A[i]==B[i]){
+            arr[i]=arr[i-1]+1;
+        }
+        else {
+            if(Ahash[B[i]]&&Bhash[A[i]]){
+                arr[i]=arr[i-1]+2;
+            }
+            else if(Ahash[B[i]]|| Bhash[A[i]]){
+                arr[i]=arr[i-1]+1;
+            }
+            else{
+                arr[i]=arr[i-1];
+            }
+
+            
+            
+        }
+    }
+    *returnSize=ASize;
+    return arr;
+}
