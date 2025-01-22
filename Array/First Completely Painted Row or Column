@@ -1,0 +1,35 @@
+void prepareMap(int** mat, int matSize, int* matColSize, int** map) {
+    for (int i = 0; i < matSize; i++) {
+        for (int j = 0; j < matColSize[0]; j++) {
+            int num = mat[i][j];
+            map[num][0] = i;  
+            map[num][1] = j;  
+        }
+    }
+}
+int firstCompleteIndex(int* arr, int arrSize, int** mat, int matSize, int* matColSize) {
+    int *row=calloc(matSize,sizeof(int));
+    int *col=calloc(matColSize[0],sizeof(int));
+ int** map = (int**)malloc((arrSize + 1) * sizeof(int*)); 
+    for (int i = 0; i <= arrSize; i++) {
+        map[i] = (int*)malloc(2 * sizeof(int));
+    }
+
+    prepareMap(mat, matSize, matColSize, map);   
+
+    for(int i=0;i<arrSize;i++){
+        int num=arr[i];
+        int a=map[num][0];
+        int b=map[num][1];
+        row[a]+=1;
+        if(row[a]==matColSize[0]){
+            return i;
+        }
+        col[b]+=1;
+        if(col[b]==matSize){
+            return i;
+        }
+    }
+    
+    return -1;
+}
