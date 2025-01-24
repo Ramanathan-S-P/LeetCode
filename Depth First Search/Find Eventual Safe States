@@ -3,7 +3,7 @@
  */
 int* terminal;
 //int* safe;
-int explore(int** graph, int graphSize, int* graphColSize, int* unreachable,
+void explore(int** graph, int graphSize, int* graphColSize, int* unreachable,
              int* visited, int node) {
     if (!terminal[node]) {
         visited[node] = 1;
@@ -12,11 +12,9 @@ int explore(int** graph, int graphSize, int* graphColSize, int* unreachable,
             if (!unreachable[graph[node][i]] && !visited[graph[node][i]]) {
                 if (!terminal[graph[node][i]]) {
 
-                   int r = explore(graph, graphSize, graphColSize, unreachable,
+                    explore(graph, graphSize, graphColSize, unreachable,
                             visited, graph[node][i]);
-                   if(r==-1){
-                    return -1;
-                   }
+                  
                 }
             } else {
                 
@@ -36,7 +34,7 @@ int explore(int** graph, int graphSize, int* graphColSize, int* unreachable,
             
         }
     }
-    return 0;
+    
 }
 int* eventualSafeNodes(int** graph, int graphSize, int* graphColSize,
                        int* returnSize) {
@@ -52,7 +50,7 @@ int* eventualSafeNodes(int** graph, int graphSize, int* graphColSize,
     for (int i = 0; i < graphSize; i++) {
         if (!unreachable[i]) {
             int* visited = calloc(graphSize, sizeof(int));
-            int r=explore(graph, graphSize, graphColSize, unreachable, visited, i);
+            explore(graph, graphSize, graphColSize, unreachable, visited, i);
             free(visited);
         }
     }
